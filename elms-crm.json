@@ -1,0 +1,605 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ELMS backend api documentation",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://elms.loc/api/crm"
+    },
+    {
+      "url": "http://backend.elms.uz/api/crm"
+    }
+  ],
+  "tags": [
+    {
+      "name": "university",
+      "description": "Universitetlar moduli"
+    },
+    {
+      "name": "faculty",
+      "description": "Fakultetlar moduli"
+    },
+    {
+      "name": "student",
+      "description": "Talabalar moduli"
+    }
+  ],
+  "paths": {
+    "/universities": {
+      "get": {
+        "tags": [
+          "university"
+        ],
+        "summary": "Universitetlar ro'yxati",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "university"
+        ],
+        "summary": "Universitetni saqlash",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/University"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/universities/{id}": {
+      "get": {
+        "tags": [
+          "university"
+        ],
+        "summary": "Universitet info",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Universitet topilmadi",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "university"
+        ],
+        "summary": "Universitet ma'lumotlarini o'zgartirish",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/University"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Universitet topilmadi",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "university"
+        ],
+        "summary": "Universitetni o'chirish",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Universitet topilmadi",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/universities/list": {
+      "get": {
+        "tags": [
+          "university"
+        ],
+        "summary": "Universitetlar ro'yxati (paginationsiz)",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query"
+          },
+          {
+            "name": "name",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        }
+      }
+    },
+    "/faculties": {
+      "get": {
+        "tags": [
+          "faculty"
+        ],
+        "summary": "Fakultetlar ro'yxati",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "faculty"
+        ],
+        "summary": "Fakultetni saqlash",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Faculty"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/faculties/{id}": {
+      "get": {
+        "tags": [
+          "faculty"
+        ],
+        "summary": "Faculty info",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Fakultet topilmadi",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "faculty"
+        ],
+        "summary": "Fakultet ma'lumotlarini o'zgartirish",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Faculty"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Fakultet topilmadi",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "faculty"
+        ],
+        "summary": "Fakultetni o'chirish",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Fakultet topilmadi",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/faculties/list": {
+      "get": {
+        "tags": [
+          "faculty"
+        ],
+        "summary": "Fakultetlar ro'yxati (paginationsiz)",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query"
+          },
+          {
+            "name": "name",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        }
+      }
+    },
+    "/students": {
+      "get": {
+        "tags": [
+          "student"
+        ],
+        "summary": "Talabalar ro'yxati",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "student"
+        ],
+        "summary": "Talabani saqlash",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/students/{id}": {
+      "get": {
+        "tags": [
+          "student"
+        ],
+        "summary": "Student info",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Talaba topilmadi",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "student"
+        ],
+        "summary": "Talaba ma'lumotlarini o'zgartirish",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Talaba topilmadi",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "student"
+        ],
+        "summary": "Talabani o'chirish",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "language",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          },
+          "404": {
+            "description": "Talaba topilmadi",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/students/list": {
+      "get": {
+        "tags": [
+          "student"
+        ],
+        "summary": "Talabalar ro'yxati (paginationsiz)",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query"
+          },
+          {
+            "name": "name",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Muvaffaqiyatli operatsiya"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "University": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "rector": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "University"
+        }
+      },
+      "Faculty": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string"
+          },
+          "university_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "faculty_code": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "University"
+        }
+      },
+      "Student": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string"
+          },
+          "university_id": {
+            "type": "integer"
+          },
+          "birth_date": {
+            "type": "string"
+          },
+          "passport": {
+            "type": "string"
+          },
+          "passport_pin": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "integer"
+          },
+          "country_id": {
+            "type": "integer"
+          },
+          "province_id": {
+            "type": "integer"
+          },
+          "city_id": {
+            "type": "integer"
+          },
+          "street": {
+            "type": "string"
+          },
+          "citizenship_id": {
+            "type": "integer"
+          },
+          "nation_id": {
+            "type": "integer"
+          },
+          "social_category_id": {
+            "type": "integer"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "second_name": {
+            "type": "string"
+          },
+          "third_name": {
+            "type": "string"
+          },
+          "other": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Student"
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
